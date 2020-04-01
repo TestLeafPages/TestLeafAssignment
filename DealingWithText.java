@@ -2,11 +2,12 @@ package week1.day3;
 
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class LeafTapsLogin {
+public class DealingWithText {
 
 	public static void main(String[] args) throws InterruptedException {
 
@@ -21,30 +22,19 @@ public class LeafTapsLogin {
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		
 		// Load the URL :: get ->
-		driver.get("http://leaftaps.com/opentaps/control/main");
+		driver.get("http://www.leafground.com/pages/Edit.html");
 		
-		/*// Click on the link that has content 'am'
-		driver.findElementByPartialLinkText("am-Babu").click();
+		driver.findElementById("email").sendKeys("babu@testleaf.com");
 		
-		// Title
-		String title = driver.getTitle();
-		System.out.println(title);*/
+		driver.findElementByXPath("//input[@value='Append ']").sendKeys("babu@testleaf.com",Keys.TAB);
 		
-		WebElement eleH2 = driver.findElementByTagName("h2");
-		String text = eleH2.getText();
-		System.out.println(text);
-		
-		String attribute = driver.findElementById("login").getAttribute("method");
+		String attribute = driver.findElementByName("username").getAttribute("value");
 		System.out.println(attribute);
 		
+		driver.findElementByXPath("(//input[@name='username'])[2]").clear();
 		
-		
-		
-		
-		
-		
-		
-		
+		boolean enabled = driver.findElementByXPath("//input[@disabled='true']").isEnabled();
+		System.out.println(enabled);
 		
 		
 		
